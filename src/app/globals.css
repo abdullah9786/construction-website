@@ -2,25 +2,109 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --gold: #d4af37;
+  --gold-light: #e6c757;
+  --gold-dark: #b8941f;
+  --black: #000000;
+  --gray-light: #f8f8f8;
+  --gray-medium: #6b7280;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --font-playfair: var(--font-playfair);
+  --font-inter: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Only reset margins and padding for specific elements to avoid conflicts with Tailwind */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote, dl, dd {
+  /* margin: 0; */
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dark);
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Force center alignment for description paragraphs */
+.force-text-center {
+  text-align: center !important;
+}
+
+/* Aggressive global text centering for all section paragraphs */
+.text-center p,
+[class*="text-center"] p {
+  text-align: center !important;
+} 
+
+/* Target specific text elements that should be centered */
+.text-xl.text-gray-600,
+.text-xl.text-gray-200,
+.text-xl.text-gray-300,
+.text-lg.text-gray-600 {
+  text-align: center !important;
+}
+
+/* Ultra-specific targeting for the problematic paragraphs */
+p.text-xl.text-gray-600.max-w-3xl.mx-auto.leading-relaxed,
+p.text-xl.text-gray-200.max-w-3xl.mx-auto.leading-relaxed {
+  text-align: center !important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+
+/* Extremely specific rules for all possible paragraph combinations */
+.text-xl[class*="text-gray"][class*="mx-auto"],
+div[class*="text-center"] p[class*="text-xl"] {
+  text-align: center !important;
+  text-align-last: center !important;
+}
+
+/* Target motion.p elements specifically */
+p[class*="max-w-3xl"],
+p[class*="max-w-2xl"],
+p[class*="max-w-4xl"] {
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
 }
