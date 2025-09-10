@@ -10,7 +10,6 @@ import {
 
 const BrochuresGrid: React.FC = () => {
   const [downloadingId, setDownloadingId] = useState<number | null>(null)
-  const [previewId, setPreviewId] = useState<number | null>(null)
 
   const brochures = [
     {

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { CheckCircle, Star, Award, Users } from 'lucide-react'
+import { CheckCircle, Star, Award } from 'lucide-react'
 
 const FloorPlanDetails: React.FC = () => {
   const benefits = [

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { motion } from 'framer-motion'
 import AboutHero from '@/components/AboutHero'
 import TowerDetails from '@/components/TowerDetails'
 import DeveloperInfo from '@/components/DeveloperInfo'

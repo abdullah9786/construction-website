@@ -160,7 +160,7 @@ const ContactForm: React.FC = () => {
               <CheckCircle className="w-6 h-6 text-green-500" />
               <div>
                 <h4 className="font-semibold text-green-800">Message Sent Successfully!</h4>
-                <p className="text-green-700 text-sm">We'll get back to you within 24 hours.</p>
+                <p className="text-green-700 text-sm">We&apos;ll get back to you within 24 hours.</p>
               </div>
             </motion.div>
           )}
