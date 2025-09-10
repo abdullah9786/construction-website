@@ -100,10 +100,9 @@ div[class*="text-center"] p[class*="text-xl"] {
   text-align-last: center !important;
 }
 
-/* Target motion.p elements specifically */
-p[class*="max-w-3xl"],
-p[class*="max-w-2xl"],
-p[class*="max-w-4xl"] {
+/* Target specific hero section paragraphs only */
+p.force-text-center,
+p[class*="max-w-3xl"][class*="force-text-center"] {
   text-align: center !important;
   width: 100% !important;
   display: block !important;
