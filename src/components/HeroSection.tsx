@@ -26,7 +26,7 @@ const HeroSection: React.FC = () => {
           className="space-y-4 sm:space-y-6 max-h-[80vh] flex flex-col justify-center"
         >
           {/* Status Badge */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -34,7 +34,7 @@ const HeroSection: React.FC = () => {
           >
             <Calendar className="w-3.5 h-3.5" />
             <span className="text-sm font-medium">Coming Soon - 2025</span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Main Heading */}
           {/* <motion.h1

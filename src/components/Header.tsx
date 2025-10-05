@@ -15,6 +15,9 @@ const Header: React.FC = () => {
   const shouldUseWhiteText = pathname === '/' && !isScrolled
 
   useEffect(() => {
+    // Check initial scroll position on mount
+    setIsScrolled(window.scrollY > 50)
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
@@ -27,13 +30,14 @@ const Header: React.FC = () => {
     { href: '/about', label: 'About' },
     { href: '/amenities', label: 'Amenities' },
     { href: '/floor-plans', label: 'Floor Plans' },
+    // { href: '/location', label: 'Location' },
     { href: '/brochures', label: 'Brochures' },
     { href: '/contact', label: 'Contact' },
   ]
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
@@ -51,8 +55,8 @@ const Header: React.FC = () => {
             >
               {/* Fortune */}
               {/* <span className={`ml-1 transition-colors duration-300 ${shouldUseWhiteText ? 'text-white' : 'text-black'}`}>Heights</span> */}
-            {/* <img src="../assets/header-logo.svg" alt=""  width={400}/> */}
-            logo required
+            <img src="../assets/fortune-square-logo.png" alt=""  width={150}  />
+            {/* logo required */}
             </motion.div>
 
           </Link>

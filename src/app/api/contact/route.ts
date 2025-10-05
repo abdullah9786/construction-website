@@ -5,8 +5,8 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     
-    // Validate required fields
-    const requiredFields = ['name', 'email', 'phone', 'subject', 'message']
+    // Validate required fields (only name, email, phone are required)
+    const requiredFields = ['name', 'email', 'phone']
     const missingFields = requiredFields.filter(field => !body[field])
     
     if (missingFields.length > 0) {
@@ -49,10 +49,9 @@ export async function POST(request: NextRequest) {
         name: body.name,
         email: body.email,
         phone: body.phone,
-        subject: body.subject,
-        message: body.message,
-        interestedIn: body.interestedIn,
-        preferredContact: body.preferredContact,
+        subject: body.subject || '',
+        message: body.message || '',
+        interestedIn: body.interestedIn || '',
       })
       console.log('Successfully saved to Google Sheets')
     } catch (sheetError) {

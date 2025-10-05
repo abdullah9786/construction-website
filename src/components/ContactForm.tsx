@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Send, CheckCircle, AlertCircle, User, Mail, Phone, MessageSquare } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Send, CheckCircle, AlertCircle, User, Mail, Phone, MessageSquare, X, PartyPopper } from 'lucide-react'
 
 interface FormData {
   name: string
@@ -11,7 +11,6 @@ interface FormData {
   subject: string
   message: string
   interestedIn: string
-  preferredContact: string
 }
 
 interface FormErrors {
@@ -25,19 +24,19 @@ const ContactForm: React.FC = () => {
     phone: '',
     subject: '',
     message: '',
-    interestedIn: '',
-    preferredContact: 'email'
+    interestedIn: ''
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
 
   const interestedOptions = [
-    '1 BHK Apartment',
-    '2 BHK Apartment', 
     '3 BHK Apartment',
-    '4 BHK Penthouse',
+    '4 BHK Apartment',
+    'Combination Type 1',
+    'Combination Type 2',
     'Site Visit',
     'Investment Opportunity',
     'General Inquiry'
@@ -69,17 +68,8 @@ const ContactForm: React.FC = () => {
       newErrors.phone = 'Please enter a valid phone number'
     }
 
-    // Subject validation
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required'
-    }
-
-    // Message validation
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required'
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters'
-    }
+    // Subject validation - Optional
+    // Message validation - Optional
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -116,15 +106,20 @@ const ContactForm: React.FC = () => {
 
       if (response.ok && result.success) {
         setSubmitStatus('success')
+        setShowSuccessModal(true)
         setFormData({
           name: '',
           email: '',
           phone: '',
           subject: '',
           message: '',
-          interestedIn: '',
-          preferredContact: 'email'
+          interestedIn: ''
         })
+        // Auto close modal after 5 seconds
+        setTimeout(() => {
+          setShowSuccessModal(false)
+          setSubmitStatus('idle')
+        }, 5000)
       } else {
         setSubmitStatus('error')
         console.error('Form submission error:', result.error)
@@ -138,47 +133,180 @@ const ContactForm: React.FC = () => {
   }
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-2xl mx-auto px-6 sm:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-            Send Us a <span className="text-gold">Message</span>
-          </h2>
-
-          {/* Success Message */}
-          {submitStatus === 'success' && (
+    <>
+      {/* Success Modal */}
+      <AnimatePresence>
+        {showSuccessModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            onClick={() => setShowSuccessModal(false)}
+          >
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-8 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center space-x-3"
+              initial={{ scale: 0.5, opacity: 0, y: 50 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.5, opacity: 0, y: 50 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden relative"
+              onClick={(e) => e.stopPropagation()}
             >
-              <CheckCircle className="w-6 h-6 text-green-500" />
-              <div>
-                <h4 className="font-semibold text-green-800">Message Sent Successfully!</h4>
-                <p className="text-green-700 text-sm">We&apos;ll get back to you within 24 hours.</p>
+              {/* Close Button */}
+              <button
+                onClick={() => setShowSuccessModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors z-10"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              {/* Success Animation */}
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 text-center">
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                  className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-full mb-4"
+                >
+                  <CheckCircle className="w-12 h-12 text-white" />
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <h3 className="font-playfair text-3xl font-bold text-gray-900 mb-2">
+                    Message Sent! 🎉
+                  </h3>
+                  <p className="text-gray-600 text-lg mb-4">
+                    Thank you for contacting us
+                  </p>
+                </motion.div>
+
+                {/* Confetti Effect */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex justify-center space-x-2 mb-4"
+                >
+                  {[...Array(5)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ y: 0, opacity: 1 }}
+                      animate={{ y: [-20, 0], opacity: [1, 0] }}
+                      transition={{
+                        delay: 0.5 + i * 0.1,
+                        duration: 1,
+                        repeat: Infinity,
+                        repeatDelay: 2
+                      }}
+                    >
+                      <PartyPopper className="w-6 h-6 text-gold" />
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Message Content */}
+              <div className="p-8">
+                <div className="space-y-4">
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex items-start space-x-3"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 bg-gold/20 rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-5 h-5 text-gold" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Quick Response</h4>
+                      <p className="text-gray-600 text-sm">
+                        We&apos;ll get back to you within 24 hours
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7 }}
+                    className="flex items-start space-x-3"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 bg-gold/20 rounded-full flex items-center justify-center">
+                      <Mail className="w-5 h-5 text-gold" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Check Your Email</h4>
+                      <p className="text-gray-600 text-sm">
+                        Confirmation sent to your email address
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.8 }}
+                    className="flex items-start space-x-3"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 bg-gold/20 rounded-full flex items-center justify-center">
+                      <Phone className="w-5 h-5 text-gold" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">Urgent Inquiry?</h4>
+                      <p className="text-gray-600 text-sm">
+                        Call us: +91 98920 72711
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+
+                <motion.button
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9 }}
+                  onClick={() => setShowSuccessModal(false)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full mt-6 bg-gold hover:bg-gold-dark text-black font-semibold py-3 px-6 rounded-full transition-all duration-300"
+                >
+                  Got it, thanks!
+                </motion.button>
               </div>
             </motion.div>
-          )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-          {/* Error Message */}
-          {submitStatus === 'error' && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-3"
-            >
-              <AlertCircle className="w-6 h-6 text-red-500" />
-              <div>
-                <h4 className="font-semibold text-red-800">Something went wrong!</h4>
-                <p className="text-red-700 text-sm">Please try again or contact us directly.</p>
-              </div>
-            </motion.div>
-          )}
+      <section className="py-24 bg-white">
+        <div className="max-w-2xl mx-auto px-6 sm:px-8 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+              Send Us a <span className="text-gold">Message</span>
+            </h2>
+
+            {/* Error Message */}
+            {submitStatus === 'error' && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-3"
+              >
+                <AlertCircle className="w-6 h-6 text-red-500" />
+                <div>
+                  <h4 className="font-semibold text-red-800">Something went wrong!</h4>
+                  <p className="text-red-700 text-sm">Please try again or contact us directly.</p>
+                </div>
+              </motion.div>
+            )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name */}
@@ -252,7 +380,7 @@ const ContactForm: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                  Subject *
+                  Subject
                 </label>
                 <input
                   type="text"
@@ -290,7 +418,7 @@ const ContactForm: React.FC = () => {
             {/* Message */}
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Message *
+                Message
               </label>
               <div className="relative">
                 <MessageSquare className="absolute left-3 top-4 w-5 h-5 text-gray-400" />
@@ -308,48 +436,6 @@ const ContactForm: React.FC = () => {
               </div>
               {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
             </div>
-
-            {/* Preferred Contact Method */}
-            {/* <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Preferred Contact Method
-              </label>
-              <div className="flex space-x-6">
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="preferredContact"
-                    value="email"
-                    checked={formData.preferredContact === 'email'}
-                    onChange={handleChange}
-                    className="mr-2 text-gold focus:ring-gold"
-                  />
-                  Email
-                </label>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="preferredContact"
-                    value="phone"
-                    checked={formData.preferredContact === 'phone'}
-                    onChange={handleChange}
-                    className="mr-2 text-gold focus:ring-gold"
-                  />
-                  Phone Call
-                </label>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="preferredContact"
-                    value="whatsapp"
-                    checked={formData.preferredContact === 'whatsapp'}
-                    onChange={handleChange}
-                    className="mr-2 text-gold focus:ring-gold"
-                  />
-                  WhatsApp
-                </label>
-              </div>
-            </div> */}
 
             {/* Submit Button */}
             <motion.button
@@ -372,9 +458,10 @@ const ContactForm: React.FC = () => {
               )}
             </motion.button>
           </form>
-        </motion.div>
-      </div>
-    </section>
+          </motion.div>
+        </div>
+      </section>
+    </>
   )
 }
 

@@ -24,10 +24,9 @@ export async function appendToSheet(data: {
   name: string
   email: string
   phone: string
-  subject: string
-  message: string
+  subject?: string
+  message?: string
   interestedIn?: string
-  preferredContact?: string
 }) {
   try {
     const sheets = await getGoogleSheetsClient()
@@ -53,16 +52,15 @@ export async function appendToSheet(data: {
         data.name,
         data.email,
         data.phone,
-        data.subject,
-        data.message,
+        data.subject || 'N/A',
+        data.message || 'N/A',
         data.interestedIn || 'N/A',
-        data.preferredContact || 'email',
       ],
     ]
 
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:H', // Adjust sheet name if different
+      range: 'Sheet1!A:G', // Updated: 7 columns (removed Preferred Contact)
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values,
@@ -89,7 +87,7 @@ export async function getSubmissions() {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: 'Sheet1!A:H',
+      range: 'Sheet1!A:G',
     })
 
     return response.data.values || []

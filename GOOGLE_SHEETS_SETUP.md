@@ -49,7 +49,6 @@
    - E1: Subject
    - F1: Message
    - G1: Interested In
-   - H1: Preferred Contact
 
 ## Step 7: Share Sheet with Service Account
 

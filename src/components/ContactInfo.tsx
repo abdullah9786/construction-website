@@ -6,6 +6,7 @@ import {
   MapPin, Phone, Mail, Clock, Car, Train, 
   Plane, Coffee, Building, Users
 } from 'lucide-react'
+import LeafletContactMap from './LeafletContactMap'
 
 const ContactInfo: React.FC = () => {
   const officeInfo = {
@@ -58,28 +59,13 @@ const ContactInfo: React.FC = () => {
             Visit Our <span className="text-gold">Sales Office</span>
           </h2>
 
-          {/* Google Maps Placeholder */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mb-8 rounded-2xl overflow-hidden shadow-lg"
-          >
-            <div className="h-64 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center relative">
-              <div className="text-center text-gray-600">
-                <MapPin className="w-12 h-12 mx-auto mb-4" />
-                <p className="text-lg font-medium">Interactive Map</p>
-                <p className="text-sm">Sales Office Location</p>
-              </div>
-              {/* Placeholder for actual Google Maps integration */}
-              <div className="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer">
-                <div className="bg-gold text-black px-6 py-2 rounded-full font-semibold">
-                  View in Google Maps
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          {/* Interactive Map with Leaflet */}
+          <LeafletContactMap
+            center={{ lat: 18.9526, lng: 72.8339 }}
+            zoom={16}
+            title="Fortune Square Sales Office"
+            address={`${officeInfo.address}, ${officeInfo.city}`}
+          />
 
           {/* Office Details */}
           <motion.div
