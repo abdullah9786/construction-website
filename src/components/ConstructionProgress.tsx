@@ -193,7 +193,7 @@ const ConstructionProgress: React.FC = () => {
         </div>
 
         {/* Call to Action */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -210,7 +210,7 @@ const ConstructionProgress: React.FC = () => {
           >
             Subscribe for Updates
           </motion.button>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )

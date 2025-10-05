@@ -32,6 +32,11 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!env.template
+
+# Google Sheets credentials
+google-credentials.json
+*-credentials.json
 
 # vercel
 .vercel

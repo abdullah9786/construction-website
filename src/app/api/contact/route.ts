@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { appendToSheet } from '@/lib/googleSheets'
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,13 +31,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Here you would typically:
-    // 1. Save to database
-    // 2. Send email notification
-    // 3. Send confirmation email to user
-    // 4. Integrate with CRM system
-    
-    // For now, we'll just log the submission
+    // Log the submission
     console.log('Contact form submission:', {
       name: body.name,
       email: body.email,
@@ -47,6 +42,24 @@ export async function POST(request: NextRequest) {
       preferredContact: body.preferredContact,
       timestamp: new Date().toISOString()
     })
+
+    // Save to Google Sheets
+    try {
+      await appendToSheet({
+        name: body.name,
+        email: body.email,
+        phone: body.phone,
+        subject: body.subject,
+        message: body.message,
+        interestedIn: body.interestedIn,
+        preferredContact: body.preferredContact,
+      })
+      console.log('Successfully saved to Google Sheets')
+    } catch (sheetError) {
+      // Log error but don't fail the request
+      console.error('Failed to save to Google Sheets:', sheetError)
+      // Continue processing even if Google Sheets fails
+    }
 
     // Simulate processing time
     await new Promise(resolve => setTimeout(resolve, 1000))

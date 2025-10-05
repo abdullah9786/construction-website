@@ -241,7 +241,7 @@ const ContactForm: React.FC = () => {
                     className={`w-full pl-12 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors ${
                       errors.phone ? 'border-red-500' : 'border-gray-300'
                     }`}
-                    placeholder="+1 (234) 567-8900"
+                    placeholder="+91 98920 72711"
                   />
                 </div>
                 {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
@@ -310,7 +310,7 @@ const ContactForm: React.FC = () => {
             </div>
 
             {/* Preferred Contact Method */}
-            <div>
+            {/* <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Preferred Contact Method
               </label>
@@ -349,7 +349,7 @@ const ContactForm: React.FC = () => {
                   WhatsApp
                 </label>
               </div>
-            </div>
+            </div> */}
 
             {/* Submit Button */}
             <motion.button

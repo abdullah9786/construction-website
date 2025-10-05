@@ -28,12 +28,13 @@ const BrochuresHero: React.FC = () => {
 
   return (
     <section className="relative py-20 bg-gradient-to-br from-gray-900 to-black text-white overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[url('/images/document-pattern.svg')] bg-repeat"></div>
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[url('/assets/elevation.png')] bg-cover bg-center opacity-40"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 sm:pt-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 sm:pt-0">
         <div className="text-center">
           {/* Badge */}
           <motion.div

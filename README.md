@@ -238,8 +238,8 @@ This project is licensed under the MIT License.
 ## 📞 Support
 
 For support or questions:
-- Email: info@fortuneheights.com
-- Phone: +1 (234) 567-8900
+- Email: anas.ansari@fortunesquare.in
+- Phone: +91 98920 72711
 
 ---
 

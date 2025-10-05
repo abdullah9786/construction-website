@@ -13,7 +13,7 @@ const HeroSection: React.FC = () => {
         <div className="relative w-full h-full bg-gradient-to-br from-black/60 via-black/40 to-black/60">
           {/* Placeholder for hero image - you can replace with actual tower image */}
           <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-700 to-gray-900 opacity-90"></div>
-          <div className="absolute inset-0 bg-[url('../assets/Banner-1.jpg')] opacity-10 bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-[url('../assets/elevation.png')] opacity-10 bg-cover bg-center"></div>
         </div>
       </div>
 
@@ -37,7 +37,7 @@ const HeroSection: React.FC = () => {
           </motion.div>
 
           {/* Main Heading */}
-          <motion.h1
+          {/* <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -45,7 +45,10 @@ const HeroSection: React.FC = () => {
           >
             Fortune
             <span className="block text-gold">Heights</span>
-          </motion.h1>
+          </motion.h1> */}
+          <div>
+            <img src="../assets/Banner-logo.svg" alt="" />
+          </div>
 
           {/* Tagline */}
           <motion.p

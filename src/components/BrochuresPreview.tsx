@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MessageSquare, Calendar } from 'lucide-react'
+import { Mail, Phone } from 'lucide-react'
 
 const BrochuresPreview: React.FC = () => {
   const contactMethods = [
@@ -10,29 +10,17 @@ const BrochuresPreview: React.FC = () => {
       icon: Phone,
       title: 'Call Us',
       description: 'Speak with our sales team',
-      action: '+1 (234) 567-8900',
+      action: '+91 98920 72711',
+      href: 'tel:+919892072711',
       color: 'from-green-500 to-green-600'
     },
     {
       icon: Mail,
       title: 'Email Us',
       description: 'Get detailed information',
-      action: 'info@fortuneheights.com',
+      action: 'anas.ansari@fortunesquare.in',
+      href: 'mailto:anas.ansari@fortunesquare.in',
       color: 'from-blue-500 to-blue-600'
-    },
-    {
-      icon: MessageSquare,
-      title: 'Live Chat',
-      description: 'Quick questions & answers',
-      action: 'Start Chat',
-      color: 'from-purple-500 to-purple-600'
-    },
-    {
-      icon: Calendar,
-      title: 'Book Visit',
-      description: 'Schedule a site tour',
-      action: 'Schedule Now',
-      color: 'from-gold to-gold-dark'
     }
   ]
 
@@ -55,39 +43,36 @@ const BrochuresPreview: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {contactMethods.map((method, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={method.href}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className="text-center group"
+              className="bg-white rounded-3xl shadow-xl border border-gray-100 p-10 text-center group hover:shadow-2xl transition-all duration-300"
             >
-              <div className={`w-20 h-20 bg-gradient-to-r ${method.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-all duration-300`}>
-                <method.icon className="w-8 h-8 text-white" />
+              <div className={`w-24 h-24 bg-gradient-to-r ${method.color} rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:shadow-2xl transition-all duration-300`}>
+                <method.icon className="w-12 h-12 text-white" />
               </div>
-              <h3 className="font-playfair text-xl font-bold text-gray-900 mb-3">
+              <h3 className="font-playfair text-2xl font-bold text-gray-900 mb-4">
                 {method.title}
               </h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 mb-6 text-lg">
                 {method.description}
               </p>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="text-gold font-semibold hover:text-gold-dark transition-colors"
-              >
+              <div className="text-gold font-bold text-lg hover:text-gold-dark transition-colors">
                 {method.action}
-              </motion.button>
-            </motion.div>
+              </div>
+            </motion.a>
           ))}
         </div>
 
         {/* Newsletter Signup */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -118,7 +103,7 @@ const BrochuresPreview: React.FC = () => {
           <div className="mt-4 text-sm text-gray-500">
             We respect your privacy. Unsubscribe at any time.
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )

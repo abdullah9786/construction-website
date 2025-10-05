@@ -33,13 +33,14 @@ const FloorPlansHero: React.FC = () => {
   ]
 
   return (
-    <section className="relative py-20 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[url('/images/blueprint-pattern.svg')] bg-repeat"></div>
+    <section className="relative py-20 bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[url('/assets/elevation.png')] bg-cover bg-center opacity-40"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 sm:pt-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 sm:pt-0">
         <div className="text-center">
           {/* Badge */}
           <motion.div
@@ -57,7 +58,7 @@ const FloorPlansHero: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-playfair text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-8"
+            className="font-playfair text-5xl md:text-7xl font-bold text-white leading-tight mb-8"
           >
             Floor
             <span className="block text-gold">Plans</span>
@@ -68,7 +69,7 @@ const FloorPlansHero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-16 force-text-center"
+            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-16 force-text-center"
           >
             Discover meticulously planned living spaces that perfectly blend functionality 
             with luxury. Each floor plan is designed to maximize natural light, ventilation, 
@@ -89,18 +90,18 @@ const FloorPlansHero: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center group hover:shadow-xl transition-all duration-300"
+                className="bg-white/10 backdrop-blur-sm border border-white/10 p-6 rounded-2xl text-center group hover:bg-white/15 transition-all duration-300"
               >
-                <div className="inline-flex p-3 rounded-xl bg-gold/10 group-hover:bg-gold/20 transition-colors mb-4">
+                <div className="inline-flex p-3 rounded-xl bg-gold/20 group-hover:bg-gold/30 transition-colors mb-4">
                   <stat.icon className="w-6 h-6 text-gold" />
                 </div>
-                <div className="font-playfair text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                <div className="font-playfair text-2xl md:text-3xl font-bold text-gold mb-2">
                   {stat.value}
                 </div>
-                <div className="font-medium text-gray-900 mb-1">
+                <div className="font-medium text-white mb-1">
                   {stat.label}
                 </div>
-                <div className="text-gray-600 text-sm">
+                <div className="text-gray-400 text-sm">
                   {stat.description}
                 </div>
               </motion.div>
@@ -114,13 +115,13 @@ const FloorPlansHero: React.FC = () => {
             transition={{ duration: 0.8, delay: 1.2 }}
             className="mt-12"
           >
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-gold hover:bg-gold-dark text-black font-semibold px-10 py-4 rounded-full text-lg transition-all duration-300 shadow-gold"
             >
               View Interactive Plans
-            </motion.button>
+            </motion.button> */}
           </motion.div>
         </div>
       </div>
@@ -130,13 +131,13 @@ const FloorPlansHero: React.FC = () => {
         initial={{ opacity: 0, rotate: -45 }}
         animate={{ opacity: 1, rotate: 0 }}
         transition={{ duration: 1, delay: 1.4 }}
-        className="absolute top-1/4 left-10 w-16 h-16 border-2 border-gold/30 transform rotate-45"
+        className="absolute top-1/4 left-10 w-16 h-16 border-2 border-gold/30 transform rotate-45 hidden md:block"
       />
       <motion.div
         initial={{ opacity: 0, rotate: 45 }}
         animate={{ opacity: 1, rotate: 0 }}
         transition={{ duration: 1, delay: 1.6 }}
-        className="absolute bottom-1/4 right-10 w-20 h-20 border-2 border-gold/20 transform rotate-45"
+        className="absolute bottom-1/4 right-10 w-20 h-20 border-2 border-gold/20 transform rotate-45 hidden md:block"
       />
     </section>
   )

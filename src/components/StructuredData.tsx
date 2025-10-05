@@ -14,8 +14,8 @@ const StructuredData: React.FC = () => {
       "postalCode": "12345",
       "addressCountry": "US"
     },
-    "telephone": "+1-234-567-8900",
-    "email": "info@fortuneheights.com",
+    "telephone": "+91-98920-72711",
+    "email": "anas.ansari@fortunesquare.in",
     "url": "https://fortuneheights.com",
     "image": "https://fortuneheights.com/images/tower-exterior.jpg",
     "priceRange": "₹85 Lakh - ₹4.95 Cr",

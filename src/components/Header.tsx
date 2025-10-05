@@ -49,9 +49,12 @@ const Header: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              Fortune
-              <span className={`ml-1 transition-colors duration-300 ${shouldUseWhiteText ? 'text-white' : 'text-black'}`}>Heights</span>
+              {/* Fortune */}
+              {/* <span className={`ml-1 transition-colors duration-300 ${shouldUseWhiteText ? 'text-white' : 'text-black'}`}>Heights</span> */}
+            {/* <img src="../assets/header-logo.svg" alt=""  width={400}/> */}
+            logo required
             </motion.div>
+
           </Link>
 
           {/* Desktop Navigation */}
@@ -71,13 +74,13 @@ const Header: React.FC = () => {
           {/* Contact Info & Mobile Menu Button */}
           <div className="flex items-center space-x-4">
             <div className="hidden xl:flex items-center space-x-6 text-sm">
-              <a href="tel:+1234567890" className={`flex items-center space-x-2 hover:text-gold transition-colors ${shouldUseWhiteText ? 'text-white' : 'text-gray-600'}`}>
+              <a href="tel:+919892072711" className={`flex items-center space-x-2 hover:text-gold transition-colors ${shouldUseWhiteText ? 'text-white' : 'text-gray-600'}`}>
                 <Phone className="w-4 h-4" />
-                <span>+1 (234) 567-8900</span>
+                <span>+91 98920 72711</span>
               </a>
-              <a href="mailto:info@fortuneheights.com" className={`flex items-center space-x-2 hover:text-gold transition-colors ${shouldUseWhiteText ? 'text-white' : 'text-gray-600'}`}>
+              <a href="mailto:anas.ansari@fortunesquare.in" className={`flex items-center space-x-2 hover:text-gold transition-colors ${shouldUseWhiteText ? 'text-white' : 'text-gray-600'}`}>
                 <Mail className="w-4 h-4" />
-                <span>info@fortuneheights.com</span>
+                <span>anas.ansari@fortunesquare.in</span>
               </a>
             </div>
             
@@ -114,13 +117,13 @@ const Header: React.FC = () => {
                 </Link>
               ))}
               <div className="pt-4 border-t border-gray-200 space-y-3">
-                <a href="tel:+1234567890" className="flex items-center space-x-2 text-gray-600 hover:text-gold transition-colors">
+                <a href="tel:+919892072711" className="flex items-center space-x-2 text-gray-600 hover:text-gold transition-colors">
                   <Phone className="w-4 h-4" />
-                  <span>+1 (234) 567-8900</span>
+                  <span>+91 98920 72711</span>
                 </a>
-                <a href="mailto:info@fortuneheights.com" className="flex items-center space-x-2 text-gray-600 hover:text-gold transition-colors">
+                <a href="mailto:anas.ansari@fortunesquare.in" className="flex items-center space-x-2 text-gray-600 hover:text-gold transition-colors">
                   <Mail className="w-4 h-4" />
-                  <span>info@fortuneheights.com</span>
+                  <span>anas.ansari@fortunesquare.in</span>
                 </a>
               </div>
             </div>

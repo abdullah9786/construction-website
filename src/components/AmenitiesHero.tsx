@@ -7,12 +7,13 @@ import { Sparkles } from 'lucide-react'
 const AmenitiesHero: React.FC = () => {
   return (
     <section className="relative py-24 bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[url('/images/amenity-pattern.svg')] bg-repeat"></div>
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[url('/assets/elevation.png')] bg-cover bg-center opacity-40"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center pt-8 sm:pt-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center pt-8 sm:pt-0">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -60,9 +61,9 @@ const AmenitiesHero: React.FC = () => {
             className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto"
           >
             {[
-              { number: '15+', label: 'Premium Amenities' },
-              { number: '24/7', label: 'Concierge Service' },
-              { number: '3', label: 'Recreation Levels' },
+              { number: '16+', label: 'Premium Amenities' },
+              { number: '24/7', label: 'Security & Reception' },
+              { number: '5000+', label: 'Sq.ft Clubhouse' },
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="font-playfair text-4xl md:text-5xl font-bold text-gold mb-2">

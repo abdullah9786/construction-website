@@ -11,119 +11,63 @@ const FloorPlansGrid: React.FC = () => {
   const floorPlans = [
     {
       id: 1,
-      type: '1 BHK',
-      name: 'Compact Elegance',
-      area: '850',
-      price: '₹85 Lakh',
-      bedrooms: 1,
-      bathrooms: 1,
-      balcony: 1,
-      parking: 1,
-      features: ['Premium Finishes', 'Smart Home Ready', 'City Views'],
-      image: '/api/placeholder/400/300',
-      popular: false
-    },
-    {
-      id: 2,
-      type: '1 BHK',
-      name: 'Urban Comfort',
-      area: '950',
-      price: '₹95 Lakh',
-      bedrooms: 1,
-      bathrooms: 1,
-      balcony: 1,
-      parking: 1,
-      features: ['Spacious Layout', 'Premium Kitchen', 'Garden Views'],
-      image: '/api/placeholder/400/300',
-      popular: false
-    },
-    {
-      id: 3,
-      type: '2 BHK',
-      name: 'Family Haven',
-      area: '1250',
-      price: '₹1.35 Cr',
-      bedrooms: 2,
-      bathrooms: 2,
-      balcony: 1,
-      parking: 1,
-      features: ['Master Bedroom Suite', 'Modular Kitchen', 'Dual Aspect Views'],
-      image: '/api/placeholder/400/300',
-      popular: true
-    },
-    {
-      id: 4,
-      type: '2 BHK',
-      name: 'Modern Living',
-      area: '1400',
-      price: '₹1.50 Cr',
-      bedrooms: 2,
-      bathrooms: 2,
-      balcony: 2,
-      parking: 1,
-      features: ['Corner Unit', 'Premium Appliances', 'Panoramic Views'],
-      image: '/api/placeholder/400/300',
-      popular: false
-    },
-    {
-      id: 5,
       type: '3 BHK',
       name: 'Luxury Residence',
       area: '1850',
       price: '₹2.25 Cr',
       bedrooms: 3,
-      bathrooms: 3,
-      balcony: 2,
+      bathrooms: 4,
+      balcony: 5,
       parking: 2,
-      features: ['Master Walk-in Closet', 'Home Office Space', 'Private Terrace'],
-      image: '/api/placeholder/400/300',
-      popular: true
-    },
-    {
-      id: 6,
-      type: '3 BHK',
-      name: 'Executive Suite',
-      area: '2100',
-      price: '₹2.65 Cr',
-      bedrooms: 3,
-      bathrooms: 3,
-      balcony: 2,
-      parking: 2,
-      features: ['Butler Pantry', 'Study Room', 'Premium Fixtures'],
-      image: '/api/placeholder/400/300',
+      features: ['3 Ensuite Bedrooms', 'Living Room Balcony', 'Dry Balcony Kitchen', 'Servant Entry'],
+      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80', // Unsplash: modern apartment
       popular: false
     },
     {
-      id: 7,
+      id: 3,
       type: '4 BHK',
       name: 'Presidential Villa',
       area: '2800',
       price: '₹3.85 Cr',
       bedrooms: 4,
-      bathrooms: 4,
+      bathrooms: 5,
       balcony: 3,
       parking: 3,
-      features: ['Double Height Ceiling', 'Private Elevator', 'Sky Deck'],
+      features: ['4 Ensuite Bedrooms', 'Living Room Balcony', 'Dry Balcony Kitchen', 'Servant Entry'],
       image: '/api/placeholder/400/300',
-      popular: true
+      popular: false
     },
     {
-      id: 8,
-      type: '4 BHK',
-      name: 'Penthouse Supreme',
-      area: '3500',
-      price: '₹4.95 Cr',
+      id: 5,
+      type: 'Combination 1',
+      name: 'Grand Residence',
+      area: '4500',
+      price: '₹6.50 Cr',
+      bedrooms: 7,
+      bathrooms: 8,
+      balcony: 9,
+      parking: 4,
+      features: ['7 Ensuite Bedrooms', 'Prayer Room', 'Living Room Balcony', 'Servant Entry'],
+      image: '/api/placeholder/400/300',
+      popular: false
+    },
+    {
+      id: 6,
+      type: 'Combination 2',
+      name: 'Executive Residence',
+      area: '3200',
+      price: '₹4.50 Cr',
       bedrooms: 4,
       bathrooms: 5,
-      balcony: 4,
+      balcony: 6,
       parking: 3,
-      features: ['Duplex Layout', 'Private Pool', '360° City Views'],
+      features: ['4 Ensuite Bedrooms', 'Prayer Room', 'Living Room Balcony', 'Servant Entry'],
       image: '/api/placeholder/400/300',
       popular: false
     }
   ]
 
-  const categories = ['All', '1 BHK', '2 BHK', '3 BHK', '4 BHK']
+  const categories = ['All', 'Combination 1', 'Combination 2', '3 BHK', '4 BHK']
 
   const filteredPlans = selectedType === 'All' 
     ? floorPlans 
@@ -217,7 +161,7 @@ const FloorPlansGrid: React.FC = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="absolute top-4 right-4 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {/* <div className="absolute top-4 right-4 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button
                       onClick={() => toggleFavorite(plan.id)}
                       className={`p-2 rounded-full transition-colors ${
@@ -231,7 +175,7 @@ const FloorPlansGrid: React.FC = () => {
                     <button className="p-2 bg-white/80 rounded-full text-gray-700 hover:bg-gold hover:text-black transition-colors">
                       <Eye className="w-4 h-4" />
                     </button>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Content */}
@@ -286,7 +230,7 @@ const FloorPlansGrid: React.FC = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex space-x-3">
+                  {/* <div className="flex space-x-3">
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
@@ -301,7 +245,7 @@ const FloorPlansGrid: React.FC = () => {
                     >
                       <Download className="w-4 h-4" />
                     </motion.button>
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
             ))}
@@ -309,7 +253,7 @@ const FloorPlansGrid: React.FC = () => {
         </motion.div>
 
         {/* Bottom CTA */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -339,7 +283,7 @@ const FloorPlansGrid: React.FC = () => {
               Customize Layout
             </motion.button>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )

@@ -9,10 +9,10 @@ import {
 
 const ContactInfo: React.FC = () => {
   const officeInfo = {
-    address: '123 Luxury Boulevard, Downtown District',
-    city: 'Metropolitan City 12345',
-    phone: '+1 (234) 567-8900',
-    email: 'info@fortuneheights.com',
+    address: '107/f hasham bldg mohd ali road above mejestic perfume',
+    city: 'Mumbai 400003',
+    phone: '+91 98920 72711',
+    email: 'anas.ansari@fortunesquare.in',
     hours: {
       weekdays: '9:00 AM - 8:00 PM',
       weekends: '10:00 AM - 6:00 PM'
@@ -32,15 +32,15 @@ const ContactInfo: React.FC = () => {
     {
       name: 'Sarah Johnson',
       role: 'Senior Sales Manager',
-      phone: '+1 (234) 567-8901',
-      email: 'sarah.johnson@fortuneheights.com',
+      phone: '+91 98920 72712',
+      email: 'sarah.johnson@fortunesquare.in',
       specialization: 'Luxury Apartments & Investment'
     },
     {
       name: 'Michael Chen',
       role: 'Customer Relations Head',
-      phone: '+1 (234) 567-8902', 
-      email: 'michael.chen@fortuneheights.com',
+      phone: '+91 98920 72713', 
+      email: 'michael.chen@fortunesquare.in',
       specialization: 'Site Visits & Documentation'
     }
   ]
@@ -128,7 +128,7 @@ const ContactInfo: React.FC = () => {
           </motion.div>
 
           {/* Nearby Landmarks */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -152,10 +152,10 @@ const ContactInfo: React.FC = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Team Members */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -192,10 +192,10 @@ const ContactInfo: React.FC = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Quick Actions */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
@@ -221,7 +221,7 @@ const ContactInfo: React.FC = () => {
                 Request Callback
               </motion.button>
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </section>

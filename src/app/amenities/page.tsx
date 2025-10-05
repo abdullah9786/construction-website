@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import AmenitiesHero from '@/components/AmenitiesHero'
 import AmenitiesGrid from '@/components/AmenitiesGrid'
 import AmenitiesGallery from '@/components/AmenitiesGallery'
+import ScrollToTop from '@/components/ScrollToTop'
 
 export const metadata: Metadata = {
   title: 'Luxury Amenities',
@@ -10,10 +11,13 @@ export const metadata: Metadata = {
 
 export default function Amenities() {
   return (
-    <div className="pt-20">
-      <AmenitiesHero />
-      <AmenitiesGrid />
-      <AmenitiesGallery />
-    </div>
+    <>
+      <ScrollToTop />
+      <div className="pt-20">
+        <AmenitiesHero />
+        <AmenitiesGrid />
+        {/* <AmenitiesGallery /> */}
+      </div>
+    </>
   )
 }

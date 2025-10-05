@@ -189,7 +189,7 @@ const DeveloperInfo: React.FC = () => {
         </motion.div>
 
         {/* Contact CTA */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -219,7 +219,7 @@ const DeveloperInfo: React.FC = () => {
               Download Company Profile
             </motion.button>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )

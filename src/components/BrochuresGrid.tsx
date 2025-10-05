@@ -10,6 +10,7 @@ import {
 
 const BrochuresGrid: React.FC = () => {
   const [downloadingId, setDownloadingId] = useState<number | null>(null)
+  const [previewId, setPreviewId] = useState<number | null>(null)
 
   const brochures = [
     {
@@ -152,12 +153,7 @@ const BrochuresGrid: React.FC = () => {
     }
   }
 
-  const categories = ['All', 'Overview', 'Floor Plans', 'Pricing', 'Amenities', 'Location', 'Legal']
-  const [selectedCategory, setSelectedCategory] = useState('All')
-
-  const filteredBrochures = selectedCategory === 'All' 
-    ? brochures 
-    : brochures.filter(b => b.category === selectedCategory)
+  // Display all brochures without filtering
 
   const containerVariants = {
     hidden: {},
@@ -182,7 +178,7 @@ const BrochuresGrid: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Download <span className="text-gold">Resources</span>
@@ -190,29 +186,6 @@ const BrochuresGrid: React.FC = () => {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed force-text-center">
             Get instant access to comprehensive project documentation and make an informed decision about your investment.
           </p>
-        </motion.div>
-
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 ${
-                selectedCategory === category
-                  ? 'bg-gold text-black shadow-gold'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 shadow-sm'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
         </motion.div>
 
         {/* Brochures Grid */}
@@ -223,7 +196,7 @@ const BrochuresGrid: React.FC = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
         >
-          {filteredBrochures.map((brochure) => (
+          {brochures.map((brochure) => (
             <motion.div
               key={brochure.id}
               variants={itemVariants}
@@ -286,7 +259,7 @@ const BrochuresGrid: React.FC = () => {
                 </div>
 
                 {/* Actions */}
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -301,14 +274,14 @@ const BrochuresGrid: React.FC = () => {
                     )}
                   </motion.button>
                   
-                  <motion.button
+                  {/* <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => handlePreview(brochure.id)}
                     className="border border-gold text-gold hover:bg-gold hover:text-black py-2 px-3 rounded-lg text-xs transition-colors duration-300 flex items-center justify-center"
                   >
                     <Eye className="w-4 h-4" />
-                  </motion.button>
+                  </motion.button> */}
                   
                   <motion.button
                     whileHover={{ scale: 1.02 }}
@@ -332,7 +305,7 @@ const BrochuresGrid: React.FC = () => {
         </motion.div>
 
         {/* Bottom CTA */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -361,7 +334,7 @@ const BrochuresGrid: React.FC = () => {
               Visit Sales Office
             </motion.button>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )

@@ -140,13 +140,14 @@ const FeaturesSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <motion.button
+          <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-gold hover:bg-gold-dark text-black font-semibold px-10 py-4 rounded-full text-lg transition-all duration-300 shadow-gold"
+            href="/amenities"
           >
             View All Amenities
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </section>
