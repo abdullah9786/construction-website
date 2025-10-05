@@ -1,5 +1,62 @@
 @import "tailwindcss";
 
+/* Nexa Font Faces */
+@font-face {
+  font-family: 'Nexa';
+  src: url('/assets/fonts/Nexa-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/assets/fonts/Nexa Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/assets/fonts/Nexa Light.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/assets/fonts/Nexa Bold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/assets/fonts/Nexa Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/assets/fonts/Nexa-Heavy.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('/assets/fonts/Nexa-Heavy.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
@@ -9,6 +66,7 @@
   --black: #000000;
   --gray-light: #f8f8f8;
   --gray-medium: #6b7280;
+  --font-nexa: 'Nexa', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 @theme inline {
@@ -17,8 +75,7 @@
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
   --color-gold-dark: var(--gold-dark);
-  --font-playfair: var(--font-playfair);
-  --font-inter: var(--font-inter);
+  --font-nexa: var(--font-nexa);
 }
 
 /* Only reset margins and padding for specific elements to avoid conflicts with Tailwind */
@@ -37,7 +94,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-nexa);
   line-height: 1.6;
 }
 

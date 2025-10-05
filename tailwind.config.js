@@ -20,8 +20,10 @@ module.exports = {
         }
       },
       fontFamily: {
-        playfair: ['var(--font-playfair)', 'serif'],
-        inter: ['var(--font-inter)', 'sans-serif'],
+        nexa: ['var(--font-nexa)', 'sans-serif'],
+        // Keep these for backward compatibility in case any component still uses them
+        playfair: ['var(--font-nexa)', 'sans-serif'],
+        inter: ['var(--font-nexa)', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',

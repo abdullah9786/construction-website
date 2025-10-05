@@ -49,14 +49,14 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <motion.div
-              className="font-playfair text-2xl md:text-3xl font-bold text-gold flex items-center leading-none mb-2"
+              className="font-playfair text-2xl md:text-3xl font-bold text-gold flex items-center leading-none"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               {/* Fortune */}
               {/* <span className={`ml-1 transition-colors duration-300 ${shouldUseWhiteText ? 'text-white' : 'text-black'}`}>Heights</span> */}
-            <img src="../assets/fortune-square-logo.png" alt=""  width={150}  />
-            {/* logo required */}
+            {/* <img src="../assets/fortune-square-logo.png" alt=""  width={150}  /> */}
+            logo required
             </motion.div>
 
           </Link>
